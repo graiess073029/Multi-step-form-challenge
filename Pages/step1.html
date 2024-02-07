@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../styles/mobile.css">
+  <link rel="stylesheet" href="../styles/styles.css">
+  <script src="https://unpkg.com/validator@latest/validator.min.js"></script>
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Multi-step form</title>
+</head>
+
+<body onload="getdata()">
+  <div class="root">
+    <div class="root_inner">
+
+      <aside class="sidebar">
+
+        <div class="container">
+          <div class="cercles">
+            <div  style="background-color: hsl(206, 94%, 87%);">
+              <p style="margin-left: 15px;color: black;">1</p>
+            </div>
+            <div >
+              <p>2</p>
+            </div>
+            <div >
+              <p>3</p>
+            </div>
+            <div>
+              <p>4</p>
+            </div>
+          </div>
+
+          <div class="steps">
+            <div>
+              <label>STEP 1</label>
+              <p>YOUR INFO</p>
+            </div>
+
+            <div>
+              <label>STEP 2</label>
+              <p>SELECT PLAN</p>
+            </div>
+
+            <div>
+              <label>STEP 3</label>
+              <p>ADD-ONS</p>
+            </div>
+
+            <div>
+              <label>STEP 4</label>
+              <p>SUMMARY</p>
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </aside>
+
+      <main class="main_page">
+        <header>
+          <h1>Personal info</h1>
+          <label>Please provide your name, email address, and your phone number</label>
+        </header>
+
+        <form>
+          <div class="form">
+
+            <div class="inputs">
+              <div class="input">
+                <div><label>Name</label><label class="error" id="one">This field is required</label></div>
+                <input onchange="check([document.getElementById('namei'),document.getElementById('one')])" required
+                  id="namei" type="text" placeholder="e.g Stephen King">
+
+              </div>
+
+              <div class="input">
+                <div><label>Email</label><label class="error" id="two">This field is required</label></div>
+                <input onchange="check([document.getElementById('maili'),document.getElementById('two')])" required
+                  id="maili" type="email" placeholder="e.g stephenking@lorem.com">
+              </div>
+
+              <div class="input">
+                <div><label>Phone Number</label><label class="error" id="three"> This field is required</label></div>
+                <input onchange="check([document.getElementById('phonei'),document.getElementById('three')])" required
+                  id="phonei"  type="number" placeholder="e.g. +1 234 567 890">
+              </div>
+
+            </div>
+          </div>
+
+          <div class="next">
+            <button style="visibility: hidden;" class="back">Go back</button>
+            <button class="next" type="button" onclick="check;setdata()">Next Step</button>
+          </div>
+
+        </form>
+      </main>
+    </div>
+  </div>
+  <script>
+    var checked = true;
+
+//Check if all the input is filled with the right format
+    function check(element) {
+      let test = []
+      if (element == undefined) {
+        var maili = document.getElementById("maili");
+        var namei = document.getElementById("namei");
+        var phonei = document.getElementById("phonei");
+        var errorn = document.getElementById("one");
+        var errorm = document.getElementById("two");
+        var errorp = document.getElementById("three");
+        var all = [
+          [namei, errorn],
+          [maili, errorm],
+          [phonei, errorp]
+
+        ]
+
+        all.forEach((i) => {
+          if (!i[0].checkValidity()) {
+            test.push(false)
+            i[1].style.display = "block"
+            i[0].style.border = "1px solid hsl(354, 84%, 57%)"
+          }
+
+          else {
+            i[1].style.display = "none"
+            i[0].style.border = "1px solid hsl(229, 24%, 87%)"
+            test.push(true)
+          }
+        })
+
+        JSON.stringify(test) === JSON.stringify([true, true, true]) ? checked = true : checked = false;
+
+
+      }
+      else {
+        if (!element[0].checkValidity()) {
+
+          element[1].style.display = "block"
+          element[0].style.border = "1px solid hsl(354, 84%, 57%)"
+          element[0].focus()
+        }
+
+        else {
+          element[1].style.display = "none"
+          element[0].style.border = "1px solid hsl(229, 24%, 87%)"
+        }
+
+      }
+      if (checked){
+        window.scrollTo(0,120)
+      }
+    }
+
+    function setdata() {
+      check()
+      if (checked) {
+        var name = document.getElementsByTagName("input")[0].value
+        var mail = document.getElementsByTagName("input")[1].value
+        var phone = document.getElementsByTagName("input")[2].value
+        localStorage.setItem("Name", name)
+        localStorage.setItem("Mail", mail)
+        localStorage.setItem("Phone", phone)
+        window.location.href = window.location.pathname.replace(window.location.pathname[37], parseInt(window.location.pathname[37]) + 1).toString()
+
+      }
+    }
+
+    function getdata() {
+      document.getElementsByTagName("input")[0].value = localStorage.getItem("Name");
+      document.getElementsByTagName("input")[1].value = localStorage.getItem("Mail");
+      document.getElementsByTagName("input")[2].value = localStorage.getItem("Phone");
+    }
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+@media screen and (max-width : 979px) {
+    .facture{
+        margin-top: 7%;
+        padding: 20px 20px 30px 20px;
+        background-color:hsl(217, 100%, 97%);
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .topfacture{
+        border-bottom: 1px solid hsl(229, 24%, 87%);
+        padding-bottom: 30px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        
+    }
+    
+    .leftfacture{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        justify-content: center;
+    }
+    
+    .rightfacture{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .bottomfacture{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .seconds{
+        display: flex;
+        flex-direction: column;
+        gap: 20px !important;
+        justify-content: center;}
+    
+    .finalprice{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 20px;
+    
+    }
+    
+    .topfacture p{
+        font-size: 18px !important;
+        font-family: 'Medium';
+        color: hsl(213, 96%, 18%);
+        text-shadow: 1px 1px hsl(206, 94%, 87%) ;
+    
+    }
+    
+    #abonnement + a{
+        font-family: 'Regular';
+        color: hsl(231, 11%, 63%);
+    }
+    
+    .leftfacture.seconds label{
+        font-family: 'Regular';
+        color: hsl(231, 11%, 63%);
+    }
+    
+    .rightfacture.seconds label{
+        font-family: 'Regular';
+        color: hsl(213, 96%, 18%);
+        text-shadow: 1px 1px hsl(206, 94%, 87%) ;
+    }
+    
+    #paiment{
+        font-family: 'Medium';
+        color: hsl(231, 11%, 63%);
+    }
+    
+    #finalprice{
+        color: hsl(243, 100%, 62%);
+        font-family: "Bold" !important;
+        font-size: 20px !important;
+    }
+}

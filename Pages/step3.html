@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+  <link rel="stylesheet" href="../styles/adds.css">
+  <link rel="stylesheet" href="../styles/styles.css">
+  <link rel="stylesheet" href="../styles/mobile.css">
+  <link rel="stylesheet" href="../styles/addsMobile.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Multi-step form</title>
+</head>
+
+<body onload="test()">
+  <div class="root">
+    <div class="root_inner">
+
+      <aside class="sidebar">
+
+        <div class="container">
+          <div class="cercles">
+            <div >
+              <p>1</p>
+            </div>
+            <div >
+              <p>2</p>
+            </div>
+            <div  style="background-color: hsl(206, 94%, 87%);">
+              <p style="margin-left: 15px;color: black;">3</p>
+            </div>
+            <div >
+              <p>4</p>
+            </div>
+          </div>
+
+          <div class="steps">
+            <div>
+              <label>STEP 1</label>
+              <p>YOUR INFO</p>
+            </div>
+
+            <div>
+              <label>STEP 2</label>
+              <p>SELECT PLAN</p>
+            </div>
+
+            <div>
+              <label>STEP 3</label>
+              <p>ADD-ONS</p>
+            </div>
+
+            <div>
+              <label>STEP 4</label>
+              <p>SUMMARY</p>
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </aside>
+
+        <main class="main_page">
+          <div class="top">
+            <header>
+              <h1>Pick add-ons</h1>
+              <label>Add-ons help enhance your gaming experience</label>
+            </header>
+
+            <div class="select_div">
+
+              <div class="add" onclick="addonclick(event)" id="online_add">
+                <div class="left_add">
+                  <div class="checkdiv">
+                    <input type="checkbox" id="add1">
+                  </div>
+                  <div class="right_left">
+                    <p>Online Service</p>
+                    <label>Access to multiplayer games</label>
+                  </div>
+
+                </div>
+                <div class="right_add">
+                  <p class="addprice" id="onlineprice">
+                  </p>
+                </div>
+              </div>
+
+              <div class="add" onclick="addonclick(event)" id="storage_add">
+                <div class="left_add">
+                  <div class="checkdiv">
+                    <input type="checkbox" id="add2">
+                  </div>
+                  <div class="right_left">
+                    <p>Larger storage</p>
+                    <label>Extra 1TB of cloud save</label>
+                  </div>
+
+                </div>
+                <div class="right_add">
+                  <p class="addprice" id="storageprice">
+                  </p>
+                </div>
+              </div>
+
+              <div class="add" onclick="addonclick(event)" id="profileadd">
+                <div class="left_add">
+                  <div class="checkdiv">
+                    <input type="checkbox" id="add3">
+                  </div>
+                  <div class="right_left">
+                    <p>Customizable profile</p>
+                    <label>Custom theme on your profile</label>
+                  </div>
+
+                </div>
+                <div class="right_add">
+                  <p class="addprice" id="profileprice">
+                  </p>
+                </div>
+              </div>
+
+            </div>
+            <div class="next">
+              <button class="back" onclick="precedent_step()">Go back</button>
+              <button class="next" type="button" onclick="next_step()">Next Step</button>
+            </div>
+        </main>
+
+
+    </div>
+  </div>
+
+  <script>
+    var onlineindex = 0;
+    var storageindex = 0;
+    var profileindex = 0;
+    var addschoosed = ["", "", ""]
+
+//Set the price of adds depending of payment mode
+    let payment = () => {
+      let yearly = localStorage.getItem("Paiment") == "Yearly";
+      let monthly = localStorage.getItem("Paiment") == "Monthly";
+
+      if (yearly) {
+        document.getElementById("onlineprice").textContent = "+$10/yr"
+        document.getElementById("storageprice").textContent = "+$20/yr"
+        document.getElementById("profileprice").textContent = "+$20/yr"
+
+      }
+
+      else if (monthly) {
+        document.getElementById("onlineprice").textContent = "+$1/mo"
+        document.getElementById("storageprice").textContent = "+$2/mo"
+        document.getElementById("profileprice").textContent = "+$2/mo"
+
+      }
+    };
+    payment()
+
+//Add the add when clicking on it and remove it when clicking on it again
+    function addonclick(event) {
+      var parent1 = event.target.parentElement
+      var parent2 = event.target.parentElement.parentElement
+      var parent3 = event.target.parentElement.parentElement.parentElement
+
+      if (event.target.id == "online_add") {
+        onlineindex += 1
+
+        if (onlineindex % 2 == 1) {
+          addschoosed[0] = "Online Service;"
+          console.log(addschoosed)
+          document.getElementById("onlineprice").style.visibility = "visible"
+          document.getElementById("online_add").style.border = "1px solid hsl(243, 100%, 62%)"
+          document.getElementById("add1").checked = true
+        }
+
+        else {
+          addschoosed[0] = ""
+          console.log(addschoosed)
+          document.getElementById("onlineprice").style.visibility = "hidden"
+          document.getElementById("online_add").style.border = "1px solid hsl(229, 24%, 87%)"
+          document.getElementById("add1").checked = false
+        }
+      }
+
+      else if (parent1.id == "online_add") {
+        onlineindex += 1
+        if (onlineindex % 2 == 1) {
+          addschoosed[0] = "Online Service;"
+          document.getElementById("onlineprice").style.visibility = "visible"
+          document.getElementById("online_add").style.border = "1px solid hsl(243, 100%, 62%)"
+          document.getElementById("add1").checked = true
+        }
+
+        else {
+          addschoosed[0] = ""
+          document.getElementById("onlineprice").style.visibility = "hidden"
+          document.getElementById("online_add").style.border = "1px solid hsl(229, 24%, 87%)"
+          document.getElementById("add1").checked = false
+        }
+      }
+
+      else if (parent2.id == "online_add") {
+        onlineindex += 1
+        if (onlineindex % 2 == 1) {
+          addschoosed[0] = "Online Service;"
+          document.getElementById("onlineprice").style.visibility = "visible"
+          document.getElementById("online_add").style.border = "1px solid hsl(243, 100%, 62%)"
+          document.getElementById("add1").checked = true
+        }
+
+        else {
+          addschoosed[0] = ""
+          document.getElementById("onlineprice").style.visibility = "hidden"
+          document.getElementById("online_add").style.border = "1px solid hsl(229, 24%, 87%)"
+          document.getElementById("add1").checked = false
+        }
+      }
+
+      else if (parent3.id == "online_add") {
+        onlineindex += 1
+        if (onlineindex % 2 == 1) {
+          addschoosed[0] = "Online Service:"
+          document.getElementById("onlineprice").style.visibility = "visible"
+          document.getElementById("online_add").style.border = "1px solid hsl(243, 100%, 62%)"
+          document.getElementById("add1").checked = true
+        }
+
+        else {
+          addschoosed[0] = ""
+          document.getElementById("onlineprice").style.visibility = "hidden"
+          document.getElementById("online_add").style.border = "1px solid hsl(229, 24%, 87%)"
+          document.getElementById("add1").checked = false
+        }
+      }
+
+
+      if (event.target.id == "storage_add") {
+        storageindex += 1
+        if (storageindex % 2 == 1) {
+          addschoosed[1] = "Larger Storage:"
+          document.getElementById("storageprice").style.visibility = "visible"
+          document.getElementById("storage_add").style.border = "1px solid hsl(243, 100%, 62%)"
+          document.getElementById("add2").checked = true
+        }
+
+        else {
+          addschoosed[1] = ""
+          document.getElementById("storageprice").style.visibility = "hidden"
+          document.getElementById("storage_add").style.border = "1px solid hsl(229, 24%, 87%)"
+          document.getElementById("add2").checked = false
+        }
+      }
+
+      else if (parent1.id == "storage_add") {
+        storageindex += 1
+        if (storageindex % 2 == 1) {
+          addschoosed[1] = "Larger Storage:"
+          document.getElementById("storageprice").style.visibility = "visible"
+          document.getElementById("storage_add").style.border = "1px solid hsl(243, 100%, 62%)"
+          document.getElementById("add2").checked = true
+        }
+
+        else {
+          addschoosed[1] = ""
+          document.getElementById("storageprice").style.visibility = "hidden"
+          document.getElementById("storage_add").style.border = "1px solid hsl(229, 24%, 87%)"
+          document.getElementById("add2").checked = false
+        }
+      }
+
+      else if (parent2.id == "storage_add") {
+        storageindex += 1
+        if (storageindex % 2 == 1) {
+          addschoosed[1] = "Larger Storage:"
+          document.getElementById("storageprice").style.visibility = "visible"
+          document.getElementById("storage_add").style.border = "1px solid hsl(243, 100%, 62%)"
+          document.getElementById("add2").checked = true
+        }
+
+        else {
+          addschoosed[1] = ""
+          document.getElementById("storageprice").style.visibility = "hidden"
+          document.getElementById("storage_add").style.border = "1px solid hsl(229, 24%, 87%)"
+          document.getElementById("add2").checked = false
+        }
+      }
+
+      else if (parent3.id == "storage_add") {
+        storageindex += 1
+        if (storageindex % 2 == 1) {
+          addschoosed[1] = "Larger Storage:"
+          document.getElementById("storageprice").style.visibility = "visible"
+          document.getElementById("storage_add").style.border = "1px solid hsl(243, 100%, 62%)"
+          document.getElementById("add2").checked = true
+        }
+
+        else {
+          addschoosed[1] = ""
+          document.getElementById("storageprice").style.visibility = "hidden"
+          document.getElementById("storage_add").style.border = "1px solid hsl(229, 24%, 87%)"
+          document.getElementById("add2").checked = false
+        }
+      }
+
+      if (event.target.id == "profileadd") {
+        profileindex += 1
+        if (profileindex % 2 == 1) {
+          addschoosed[2] = "Customizable profile:"
+          document.getElementById("profileprice").style.visibility = "visible"
+          document.getElementById("profileadd").style.border = "1px solid hsl(243, 100%, 62%)"
+          document.getElementById("add3").checked = true
+        }
+
+        else {
+          addschoosed[2] = ""
+          document.getElementById("profileprice").style.visibility = "hidden"
+          document.getElementById("profileadd").style.border = "1px solid hsl(229, 24%, 87%)"
+          document.getElementById("add3").checked = false
+        }
+      }
+
+      else if (parent1.id == "profileadd") {
+        profileindex += 1
+        if (profileindex % 2 == 1) {
+          addschoosed[2] = "Customizable profile:"
+          document.getElementById("profileprice").style.visibility = "visible"
+          document.getElementById("profileadd").style.border = "1px solid hsl(243, 100%, 62%)"
+          document.getElementById("add3").checked = true
+        }
+
+        else {
+          addschoosed[2] = ""
+          document.getElementById("profileprice").style.visibility = "hidden"
+          document.getElementById("profileadd").style.border = "1px solid hsl(229, 24%, 87%)"
+          document.getElementById("add3").checked = false
+        }
+      }
+
+      else if (parent2.id == "profileadd") {
+        profileindex += 1
+        if (profileindex % 2 == 1) {
+          addschoosed[2] = "Customizable profile:"
+          document.getElementById("profileprice").style.visibility = "visible"
+          document.getElementById("profileadd").style.border = "1px solid hsl(243, 100%, 62%)"
+          document.getElementById("add3").checked = true
+        }
+
+        else {
+          addschoosed[2] = ""
+          document.getElementById("profileprice").style.visibility = "hidden"
+          document.getElementById("profileadd").style.border = "1px solid hsl(229, 24%, 87%)"
+          document.getElementById("add3").checked = false
+        }
+      }
+
+      else if (parent3.id == "profileadd") {
+        profileindex += 1
+        if (profileindex % 2 == 1) {
+          addschoosed[2] = "Customizable profile:"
+          document.getElementById("profileprice").style.visibility = "visible"
+          document.getElementById("profileadd").style.border = "1px solid hsl(243, 100%, 62%)"
+          document.getElementById("add3").checked = true
+        }
+
+        else {
+          addschoosed[2] = ""
+          document.getElementById("profileprice").style.visibility = "hidden"
+          document.getElementById("profileadd").style.border = "1px solid hsl(229, 24%, 87%)"
+          document.getElementById("add3").checked = false
+        }
+      }
+
+      console.log(addschoosed)
+
+    }
+
+//Saving the data into localStorage if all is fine
+    function setdata() {
+      localStorage.setItem("Customizable profile", [document.getElementById("profileprice").textContent, document.getElementById("profileprice").style.visibility == "visible"])
+      localStorage.setItem("Larger Storage", [document.getElementById("storageprice").textContent, document.getElementById("storageprice").style.visibility == "visible"])
+      localStorage.setItem("Online Service", [document.getElementById("onlineprice").textContent, document.getElementById("onlineprice").style.visibility == "visible"])
+    }
+
+//Navigation functions
+    function next_step() {
+      setdata()
+      window.location.href = window.location.pathname.replace(window.location.pathname[37], parseInt(window.location.pathname[37]) + 1).toString()
+    }
+
+    function precedent_step() {
+      window.location.href = window.location.pathname.replace(window.location.pathname[37], parseInt(window.location.pathname[37]) - 1).toString()
+
+    }
+   
+
+  </script>
+
+</body>
+
+</html>

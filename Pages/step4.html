@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+  <link rel="stylesheet" href="../styles/mobile.css">
+  <link rel="stylesheet" href="../styles/factureMobile.css">
+  <link rel="stylesheet" href="../styles/styles.css">
+  <link rel="stylesheet" href="../styles/facture.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Multi-step form</title>
+</head>
+
+<body onload="load_page()">
+  <div class="root">
+    <div class="root_inner">
+
+      <aside class="sidebar">
+
+        <div class="container">
+          <div class="cercles">
+            <div >
+              <p>1</p>
+            </div>
+            <div >
+              <p>2</p>
+            </div>
+            <div >
+              <p>3</p>
+            </div>
+            <div  style="background-color: hsl(206, 94%, 87%);">
+              <p style="margin-left: 15px;color: black;">4</p>
+            </div>
+          </div>
+
+          <div class="steps">
+            <div>
+              <label>STEP 1</label>
+              <p>YOUR INFO</p>
+            </div>
+
+            <div>
+              <label>STEP 2</label>
+              <p>SELECT PLAN</p>
+            </div>
+
+            <div>
+              <label>STEP 3</label>
+              <p>ADD-ONS</p>
+            </div>
+
+            <div>
+              <label>STEP 4</label>
+              <p>SUMMARY</p>
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </aside>
+      <main class="main_page">
+        <div class="top">
+          <header>
+            <h1>Finishing up</h1>
+            <label>Double-check everything looks OK before confirming</label>
+          </header>
+
+          <div class="facture">
+            <div class="topfacture">
+              <div class="leftfacture">
+                <p id="abonnement"></p>
+                <a href="step2.html"></a>
+              </div>
+
+              <div class="rightfacture">
+                <p id="priceabonnement"></p>
+
+              </div>
+            </div>
+
+            <div class="bottomfacture">
+              <div class="leftfacture seconds">
+                <label id="option1"></label>
+                <label id="option2"></label>
+                <label id="option3"></label>
+
+              </div>
+
+              <div class="rightfacture seconds">
+                <label id="poption1"></label>
+                <label id="poption2"></label>
+                <label id="poption3"></label>
+
+              </div>
+            </div>
+
+          </div>
+
+          <div class="finalprice">
+            <label id="paiment">
+
+            </label>
+
+            <p id="finalprice"></p>
+
+          </div>
+
+          <div class="next">
+            <button class="back" onclick="precedent_step()">Go back</button>
+            <button class="next" type="button" onclick="next_step()">Confirm</button>
+          </div>
+      </main>
+
+
+
+    </div>
+  </div>
+
+  <script>
+
+    function load_page() {
+      document.getElementById("abonnement").textContent = localStorage.getItem("Abonnement") + " " + localStorage.getItem("Paiment")
+      document.getElementById("priceabonnement").textContent = localStorage.getItem("Prix")
+      document.getElementById("option1").textContent = "Online Service "
+      document.getElementById("poption1").textContent = localStorage.getItem("Online Service").split(",")[0]
+      document.getElementById("option2").textContent = "Larger Storage"
+      document.getElementById("poption2").textContent = localStorage.getItem("Larger Storage").split(",")[0]
+      document.getElementById("option3").textContent = "Customizable profile"
+      document.getElementById("poption3").textContent = localStorage.getItem("Customizable profile").split(",")[0]
+
+
+      if (localStorage.getItem("Online Service").split(",")[1] == "false") {
+        document.getElementById("option1").style.display = "none"
+        document.getElementById("poption1").style.display = "none"
+        var price1 = 0;
+      }
+
+      else {
+        var price1 = parseInt(localStorage.getItem("Online Service").split(",")[0].split("/")[0].split("$")[1])
+      }
+
+      if (localStorage.getItem("Larger Storage").split(",")[1] == "false") {
+        document.getElementById("option2").style.display = "none"
+        document.getElementById("poption2").style.display = "none"
+        var price2 = 0;
+      }
+
+      else {
+        var price2 = parseInt(localStorage.getItem("Larger Storage").split(",")[0].split("/")[0].split("$")[1])
+      }
+
+      if (localStorage.getItem("Customizable profile").split(",")[1] == "false") {
+        document.getElementById("option3").style.display = "none"
+        document.getElementById("poption3").style.display = "none"
+        var price3 = 0;
+      }
+
+      else {
+        var price3 = parseInt(localStorage.getItem("Customizable profile").split(",")[0].split("/")[0].split("$")[1])
+      }
+
+      if (localStorage.getItem("Paiment") == "Monthly") {
+        document.getElementById('paiment').textContent = "Total (per month)"
+        var finalprice = "+$" + (price1 + price2 + price3 + parseInt(localStorage.getItem("Prix").split(",")[0].split("/")[0].split("$")[1])) + "/mo"
+      }
+
+      if (localStorage.getItem("Paiment") == "Yearly") {
+        document.getElementById('paiment').textContent = "Total (per year)"
+        var finalprice = "+$" + (price1 + price2 + price3 + parseInt(localStorage.getItem("Prix").split(",")[0].split("/")[0].split("$")[1])) + "/yr"
+      }
+
+      document.getElementById("finalprice").textContent = finalprice;
+
+    }
+
+    function next_step() {
+      window.location.href = window.location.pathname.replace(window.location.pathname[37], parseInt(window.location.pathname[37]) + 1).toString()
+    }
+
+    function precedent_step() {
+      window.location.href = window.location.pathname.replace(window.location.pathname[37], parseInt(window.location.pathname[37]) - 1).toString()
+
+    }
+  </script>
+
+</body>
+
+</html>

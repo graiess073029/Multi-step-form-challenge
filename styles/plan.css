@@ -1,0 +1,146 @@
+@media screen  and (min-width : 980px){
+    .options{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 20px;
+    }
+    
+    .error{
+        padding: 10px 0px 10px 0px;
+        position: relative;
+        bottom: 7px;
+    }
+    
+    
+    .option{
+        border: 1px solid hsl(229, 24%, 87%);
+        border-radius: 10px;
+        width: 140px;
+        height: 100%;
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 50px;
+    }
+    
+    .option img{
+        margin-top: 10px;
+        margin-left: 10px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .option p{
+        font-family: "Medium";
+        color: hsl(213, 96%, 18%);
+        text-shadow: 1px 1px hsl(206, 94%, 87%) ;
+    
+    }
+    
+    .option label{
+        color: hsl(231, 11%, 63%);
+        font-family: "Regular";
+    }
+    
+    .option div{
+        margin-left: 15px;
+        margin-bottom: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .top{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 20px;
+    }
+    
+    .free{
+        display: none;
+        font-size: small;
+        text-shadow: 1px 1px hsl(206, 94%, 87%) ;
+        color: hsl(213, 96%, 18%) !important;
+    }
+    
+    .option:hover{
+        border: 1px solid hsl(243, 100%, 62%);
+    }
+    
+    .containery{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 40px;
+    }
+    
+    .switch {
+        display: inline-block;
+        position: relative;
+        width: 43px;
+        height: 23px;
+        cursor: pointer;
+        overflow: hidden;
+    }
+    
+    .switch input {
+        position: absolute;
+    
+        width: 0;
+        height: 0;
+    }   
+    
+    .switch input + span {
+        position: absolute;
+       top: 0;
+       bottom: 0;
+       left: 0;
+       right: 0;
+       background: hsl(213, 96%, 18%);
+       border-radius: 20px;
+    }
+    
+    
+    .switch input + span:before {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        top: 52.5%;
+        left: 4px;
+        width: 16px;
+        height: 16px;
+        background: white;
+        border-radius: 50%;
+        transform: translateY(-50%);
+        transition: all .5s;
+    }
+    
+    .switch input:checked + span:before {
+        left: 23px;
+    }
+    
+    
+    .choosedate p{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: hsl(231, 11%, 63%);
+        font-family: "Medium";
+    }
+    
+    .choosedate{
+        padding-top: 15px;
+        padding-bottom: 15px;
+        width: 100%;
+        border-radius: 10px;
+        background-color: hsl(243, 100%, 62%);
+    }
+    
+    #month{
+        color: white;
+    }
+}

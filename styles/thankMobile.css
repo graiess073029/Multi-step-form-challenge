@@ -1,0 +1,46 @@
+@media screen and (max-width : 979px) {
+    .main_inner{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    
+    .main_page{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding-top: 60px;
+        padding-bottom: 60px;
+    
+    }
+    
+    .main_inner header{
+        margin: 0;
+    }
+    
+    .main_inner div{
+        text-align: center;
+    }
+    
+    img{
+        width: min-content;
+    }
+    
+    h1{
+        font-size: 32px;
+        margin-bottom: 10px;
+        text-shadow: 1px 1px hsl(206, 94%, 87%) ;
+        font-family: "Bold";
+        color: hsl(213, 96%, 18%);
+    }
+    
+    p{
+        color: hsl(231, 11%, 63%);
+        font-family: "Regular";
+        font-size: 1em;
+        line-height: 20px;
+    }
+}

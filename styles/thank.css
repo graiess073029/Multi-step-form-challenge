@@ -1,0 +1,39 @@
+@media screen and (min-width : 980px) {
+    .main_inner{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-bottom: 120px;
+    }
+    
+    
+    .main_page{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    
+    }
+    
+    .main_inner header{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .main_inner div{
+        text-align: center;
+    }
+    
+    h1{
+        font-size: 32px;
+        margin-bottom: 10px;
+        text-shadow: 1px 1px hsl(206, 94%, 87%) ;
+        font-family: "Bold";
+        color: hsl(213, 96%, 18%);
+    }
+    
+    p{
+        color: hsl(231, 11%, 63%);
+        font-family: "Regular";
+        font-size: 16px;
+    }
+}

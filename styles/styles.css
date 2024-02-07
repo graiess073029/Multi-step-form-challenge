@@ -1,0 +1,240 @@
+@font-face {
+    font-family: "Bold";
+    src: url("../assets/fonts/Ubuntu-Bold.ttf");
+}
+
+@font-face {
+    font-family: "Medium";
+    src: url("../assets/fonts/Ubuntu-Medium.ttf");
+}
+
+@font-face {
+    font-family: "Regular";
+    src: url("../assets/fonts/Ubuntu-Regular.ttf");
+}
+
+
+@media screen and (min-width : 980px){ 
+    
+    *{
+        outline: none;
+        margin: 0%;
+        padding:0%;
+    }
+
+    p{
+        font-size: 16px !important;
+    }
+    
+    html{
+        width: 100%;
+        height: 100%;
+    }
+    
+    body{
+        width: 100%;
+        height: 100%;
+        background-color: hsl(217, 100%, 97%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+
+    .root{
+        background-color: hsl(0, 0%, 100%);
+        border-radius: 20px;
+        width: 950px;
+        height: 600px;
+    }
+    
+    .root_inner{
+
+        padding: 2% 2% 2% 2%;
+        height: 93%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 90px;
+    }
+    
+    .sidebar{
+        background-image: url("../assets/images/bg-sidebar-desktop.svg");
+        background-size: cover;
+        width:270px;
+        height:560px;
+    }
+    
+    .container{
+        margin-top: 15%;
+        margin-left: 15%;
+        height: 85%;
+        width: 85%;
+        display: flex;
+        flex-direction: row;
+        gap:20px;
+
+    }
+
+    .cercles{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .cercles div p{
+        margin-left: 15px;
+        margin-top: 10px;
+        color: white;
+        font-family: "Medium";
+
+    }
+
+    .steps{
+        display: flex;
+        flex-direction: column;
+        gap: 23px;    
+    }
+
+    .steps div p{
+        color: hsl(0, 0%, 100%);
+        font-family: "Medium";
+    }
+
+
+    .steps div{
+        height: 50px;
+    }
+
+    .steps div label{
+        margin-top: 5px;
+        font-size: 14px;
+        color: hsl(231, 11%, 63%);
+        font-family: "Regular";
+    }
+
+
+    .cercles div{
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        background-color: transparent;
+        border:  1px solid white;
+        border-radius:  90px;
+    }
+    
+
+    
+    .main_page header{
+        margin-top: 10%;
+    }
+    
+    .main_page header h1{
+        text-shadow: 1px 1px hsl(206, 94%, 87%) ;
+        font-family: "Bold";
+        margin: 0%;
+        margin-bottom: 2%;
+    }
+
+    
+    .main_page header label{
+        color: hsl(231, 11%, 63%);
+        font-family: "Regular";
+    }
+    
+    .form{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 20px;
+    }
+    
+    .main_page{
+        width: calc(100% - 270px - 120px);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+    }
+    
+    .form label{
+        text-shadow: 1px 1px hsl(206, 94%, 87%) ;
+        font-family: "Regular";
+        color: hsl(213, 96%, 18%);
+    }
+    
+    .input{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .input div{
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .error{
+        color:hsl(354, 84%, 57%) !important ;
+        font-family: "Bold" !important;
+        visibility: hidden;
+    }
+    
+    input[type="text" ] , input[type="email"], input[type="number"]{
+        width: 95%;
+        height: 40px;
+        border-radius:  10px;
+        border: 1px solid hsl(229, 24%, 87%);
+        padding-left: 20px;
+    }
+    
+    input[type="text" ]::placeholder , input[type="email"]::placeholder, input[type="number"]::placeholder{
+        color: hsl(231, 11%, 63%);
+    }
+    
+    .inputs{
+        display:flex ;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .next .next
+    {
+        padding: 15px 30px 15px 30px;
+        border-radius:  10px;
+        background-color: hsl(213, 96%, 18%);
+        color: white;
+        font-size: 16px;
+
+    }
+
+    div.next{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    input[type="text" ]:hover , input[type="email"]:hover, input[type="number"]:hover{
+        border: 1px solid hsl(243, 100%, 62%);
+    }
+    
+    input[type="text" ]:focus , input[type="email"]:focus, input[type="number"]:focus{
+        border: 1px solid hsl(243, 100%, 62%);
+    }
+
+    .back{
+        background-color: transparent;
+        color: hsl(231, 11%, 63%);
+        font-family: "Medium";
+        border: 0px;
+        font-size: 16px;
+        padding: 15px 30px 15px 30px;
+    }
+
+    .next .next:hover{
+        cursor: pointer;
+    }
+
+
+}
