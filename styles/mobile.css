@@ -22,18 +22,6 @@
     }
 }
 
-@media screen and (orientation: landscape) and (max-width : 979px) {
-    div.next {
-        position : static;
-        border-radius: 0px;
-        background-color: white;
-        padding: 40px 5vw 10px 5vw;
-        display: flex;
-        justify-content: space-between;
-        
-    }
-}
-
 @media screen and (max-width : 979px) {
     * {
         outline: none;
@@ -235,5 +223,17 @@
         cursor: pointer;
     }
         
+}
+
+@media screen and (orientation: landscape) and (max-width : 979px) {
+    div.next {
+        position : static;
+        border-radius: 0px;
+        background-color: white;
+        padding: 40px 5vw 10px 5vw;
+        display: flex;
+        justify-content: space-between;
+        
+    }
 }
 
